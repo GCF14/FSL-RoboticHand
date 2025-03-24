@@ -15,12 +15,18 @@ def index():
 
 @app.route('/control', methods=['POST'])
 def control():
+    data = request.json
+    print(f"Full received data: {data}")  
+
+    command = data.get('command', '')
+    print(f"Received command: {command}") 
+
     if ser:
-        data = request.json
-        command = data.get('command', '')
-        ser.write(command.encode())  # Send command to the robot hand
+        ser.write(command.encode())
         return jsonify({'status': 'success', 'command': command})
+
     return jsonify({'status': 'error', 'message': 'Serial not connected'})
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)  # Access from any device

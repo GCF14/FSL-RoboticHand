@@ -12,51 +12,51 @@
     <div class="content">
         <div class="keyboard">
             <div class="row" style="gap: 10px;">
-                <div class="container">1</div>
-                <div class="container">2</div>
-                <div class="container">3</div>
-                <div class="container">4</div>
-                <div class="container">5</div>
-                <div class="container">6</div>
-                <div class="container">7</div>
-                <div class="container">8</div>
-                <div class="container">9</div>
-                <div class="container">0</div>
+                <div class="container" onclick="sendCommand('1')">1</div>
+                <div class="container" onclick="sendCommand('2')">2</div>
+                <div class="container" onclick="sendCommand('3')">3</div>
+                <div class="container" onclick="sendCommand('4')">4</div>
+                <div class="container" onclick="sendCommand('5')">5</div>
+                <div class="container" onclick="sendCommand('6')">6</div>
+                <div class="container" onclick="sendCommand('7')">7</div>
+                <div class="container" onclick="sendCommand('8')">8</div>
+                <div class="container" onclick="sendCommand('9')">9</div>
+                <div class="container" onclick="sendCommand('0')">0</div>
             </div>
     
             <div class="row">
-                <div class="container">Q</div>
-                <div class="container">W</div>
-                <div class="container">E</div>
-                <div class="container">R</div>
-                <div class="container">T</div>
-                <div class="container">Y</div>
-                <div class="container">U</div>
-                <div class="container">I</div>
-                <div class="container">O</div>
-                <div class="container">P</div>
+                <div class="container" onclick="sendCommand('Q')">Q</div>
+                <div class="container" onclick="sendCommand('W')">W</div>
+                <div class="container" onclick="sendCommand('E')">E</div>
+                <div class="container" onclick="sendCommand('R')">R</div>
+                <div class="container" onclick="sendCommand('T')">T</div>
+                <div class="container" onclick="sendCommand('Y')">Y</div>
+                <div class="container" onclick="sendCommand('U')">U</div>
+                <div class="container" onclick="sendCommand('I')">I</div>
+                <div class="container" onclick="sendCommand('O')">O</div>
+                <div class="container" onclick="sendCommand('P')">P</div>
             </div>
     
             <div class="row">
-                <div class="container">A</div>
-                <div class="container">S</div>
-                <div class="container">D</div>
-                <div class="container">F</div>
-                <div class="container">G</div>
-                <div class="container">H</div>
-                <div class="container">J</div>
-                <div class="container">K</div>
-                <div class="container">L</div>
+                <div class="container" onclick="sendCommand('A')">A</div>
+                <div class="container" onclick="sendCommand('S')">S</div>
+                <div class="container" onclick="sendCommand('D')">D</div>
+                <div class="container" onclick="sendCommand('F')">F</div>
+                <div class="container" onclick="sendCommand('G')">G</div>
+                <div class="container" onclick="sendCommand('H')">H</div>
+                <div class="container" onclick="sendCommand('J')">J</div>
+                <div class="container" onclick="sendCommand('K')">K</div>
+                <div class="container" onclick="sendCommand('L')">L</div>
             </div>
     
             <div class="row">
-                <div class="container">Z</div>
-                <div class="container">X</div>
-                <div class="container">C</div>
-                <div class="container">V</div>
-                <div class="container">B</div>
-                <div class="container">N</div>
-                <div class="container">M</div>
+                <div class="container" onclick="sendCommand('Z')">Z</div>
+                <div class="container" onclick="sendCommand('X')">X</div>
+                <div class="container" onclick="sendCommand('C')">C</div>
+                <div class="container" onclick="sendCommand('V')">V</div>
+                <div class="container" onclick="sendCommand('B')">B</div>
+                <div class="container" onclick="sendCommand('N')">N</div>
+                <div class="container" onclick="sendCommand('M')">M</div>
             </div>
     
         </div>
@@ -75,6 +75,24 @@
         </div>
 
     </div>
+
+    <script>
+        async function sendCommand(command) {
+            try {
+                const response = await fetch('/control', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: command })
+                });
+
+                const result = await response.json();
+                console.log(result);  
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+    </script>
     
 
     
