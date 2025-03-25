@@ -5,8 +5,9 @@ This project is a web-based interface for controlling a robotic hand that perfor
 
 ## Installation and Setup
 ### Steps:
-1. Clone the repository:
-git clone https://github.com/GCF14/FSL-RoboticHand
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/GCF14/FSL-RoboticHand.git
 2. Upload the Arduino sketch to your Arduino board using the Arduino IDE.
 3. Install necessary Python dependencies
 pip install flask serial
